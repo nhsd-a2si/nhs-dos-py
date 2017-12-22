@@ -26,7 +26,9 @@ A client library for interacting with NHS DoS APIs
 
 Python Support
 --------------
-Support for Python 3 only - this library does not support Legacy Python (Python 2).
+**Support for Python 3.6+ only.**
+
+This library does not support **Legacy Python** (Python 2).
 
 
 Features
