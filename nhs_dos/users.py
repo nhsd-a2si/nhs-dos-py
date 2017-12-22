@@ -1,10 +1,10 @@
 class User:
-    def __init__(self, username: str, password: str):
+    def __init__(self, username, password):
         self.username = username
         self.password = password
 
     def __repr__(self):
-        return f'<User {username}>'
+        return '<User {0}>'.format(self.username)
 
     def __str__(self):
-        return f'<User {username}>'
+        return '<User {0}>'.format(self.username)

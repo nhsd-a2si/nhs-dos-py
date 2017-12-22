@@ -4,7 +4,7 @@
 
 __author__ = """Matt Stibbs"""
 __email__ = 'matt@stibbsy.co.uk'
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 from .users import User
 from .cases import Case

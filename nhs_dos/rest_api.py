@@ -1,8 +1,11 @@
 import requests
+import logging
 
-from . import users
 from .models import Service, ServiceList
 from .exceptions import DosClientException
+
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 uat_url = 'https://uat.pathwaysdos.nhs.uk/app/controllers/api/v1.0/'
 
@@ -11,7 +14,7 @@ class RestApiClient:
     """
     Client object for performing requests against the DoS Rest API
     """
-    def __init__(self, user: users.User, url: str=uat_url):
+    def __init__(self, user, url=uat_url):
 
         self.user = user
         self.url = url
@@ -22,7 +25,7 @@ class RestApiClient:
 
         api_path = '/app/controllers/api/v1.0/services/byServiceId/'
 
-        url = f'{self.url}{api_path}{service_id}'
+        url = '{0}{1}{2}'.format(self.url, api_path, service_id)
 
         try:
             response = self.s.get(url)
@@ -37,9 +40,9 @@ class RestApiClient:
 
         if service_count == 1:
             s1 = Service(response.json()['success']['services'][0])
-            print(s1.id)
-            print(s1.name)
-            print(s1.endpoints)
+            logger.debug(s1.id)
+            logger.debug(s1.name)
+            logger.debug(s1.endpoints)
             return s1
         elif service_count == 0:
             return ServiceList()
@@ -49,7 +52,7 @@ class RestApiClient:
     def get_service_by_ods(self, ods_code):
         api_path = '/app/controllers/api/v1.0/services/byOdsCode/'
 
-        url = f'{self.url}{api_path}{service_id}'
+        url = '{0}{1}{2}'.format(self.url, api_path, ods_code)
 
         try:
             response = self.s.get(url)
@@ -64,9 +67,9 @@ class RestApiClient:
 
         if service_count == 1:
             s1 = Service(response.json()['success']['services'][0])
-            print(s1.id)
-            print(s1.name)
-            print(s1.endpoints)
+            logger.debug(s1.id)
+            logger.debug(s1.name)
+            logger.debug(s1.endpoints)
             return s1
         elif service_count == 0:
             return ServiceList()

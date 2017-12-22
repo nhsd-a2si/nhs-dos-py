@@ -25,12 +25,12 @@ test_requirements = [
 
 setup(
     name='nhs_dos',
-    version='0.1.0',
+    version='0.1.1',
     description="A Python client library for interacting with the NHS Service Directory APIs",
     long_description=readme + '\n\n' + history,
     author="Matt Stibbs",
     author_email='matt@stibbsy.co.uk',
-    url='https://github.com/mattstibbs/nhs_dos',
+    url='https://github.com/nhsd-a2si/nhs_dos',
     packages=find_packages(include=['nhs_dos']),
     include_package_data=True,
     install_requires=requirements,
