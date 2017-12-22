@@ -9,18 +9,20 @@ name = "pypi"
 
 bumpversion = "==0.5.3"
 watchdog = "==0.8.3"
-tox = "==2.3.1"
+tox = "*"
 coverage = "==4.1"
-sphinx = "==1.4.8"
+sphinx = "*"
 cryptography = "*"
 pyyaml = "==3.11"
-pytest = "==2.9.2"
-pytest-runner = "==2.11.1"
+pytest = "*"
+pytest-runner = "*"
 setuptools = "*"
-flake8 = "*"
+"flake8" = "*"
 docutils = "==0.12"
+update = "*"
 
 
 [packages]
 
 requests = "*"
+update = "*"
