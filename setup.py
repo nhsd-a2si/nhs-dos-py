@@ -25,7 +25,7 @@ test_requirements = [
 
 setup(
     name='nhs_dos',
-    version='0.1.0',
+    version='0.1.1',
     description="A Python client library for interacting with the NHS Service Directory APIs",
     long_description=readme + '\n\n' + history,
     author="Matt Stibbs",
