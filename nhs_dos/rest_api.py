@@ -1,8 +1,11 @@
 import requests
+import logging
 
-from . import users
 from .models import Service, ServiceList
 from .exceptions import DosClientException
+
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 uat_url = 'https://uat.pathwaysdos.nhs.uk/app/controllers/api/v1.0/'
 
@@ -37,9 +40,9 @@ class RestApiClient:
 
         if service_count == 1:
             s1 = Service(response.json()['success']['services'][0])
-            print(s1.id)
-            print(s1.name)
-            print(s1.endpoints)
+            logger.debug(s1.id)
+            logger.debug(s1.name)
+            logger.debug(s1.endpoints)
             return s1
         elif service_count == 0:
             return ServiceList()
@@ -64,9 +67,9 @@ class RestApiClient:
 
         if service_count == 1:
             s1 = Service(response.json()['success']['services'][0])
-            print(s1.id)
-            print(s1.name)
-            print(s1.endpoints)
+            logger.debug(s1.id)
+            logger.debug(s1.name)
+            logger.debug(s1.endpoints)
             return s1
         elif service_count == 0:
             return ServiceList()
