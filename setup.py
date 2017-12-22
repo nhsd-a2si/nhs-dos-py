@@ -30,7 +30,7 @@ setup(
     long_description=readme + '\n\n' + history,
     author="Matt Stibbs",
     author_email='matt@stibbsy.co.uk',
-    url='https://github.com/mattstibbs/nhs_dos',
+    url='https://github.com/nhsd-a2si/nhs_dos',
     packages=find_packages(include=['nhs_dos']),
     include_package_data=True,
     install_requires=requirements,
