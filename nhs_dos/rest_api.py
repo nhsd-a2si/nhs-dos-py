@@ -11,7 +11,7 @@ class RestApiClient:
     """
     Client object for performing requests against the DoS Rest API
     """
-    def __init__(self, user: users.User, url: str=uat_url):
+    def __init__(self, user, url=uat_url):
 
         self.user = user
         self.url = url

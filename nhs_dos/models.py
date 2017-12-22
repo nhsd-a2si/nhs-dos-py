@@ -22,7 +22,7 @@ class Endpoint:
 
 
 class ServiceList:
-    def __init__(self, service_list: list=None):
+    def __init__(self, service_list=None):
 
         self._service_list = []
 
