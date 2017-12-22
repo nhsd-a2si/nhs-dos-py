@@ -22,7 +22,7 @@ class RestApiClient:
 
         api_path = '/app/controllers/api/v1.0/services/byServiceId/'
 
-        url = f'{self.url}{api_path}{service_id}'
+        url = '{0}{1}{2}'.format(self.url, api_path, service_id)
 
         try:
             response = self.s.get(url)
@@ -49,7 +49,7 @@ class RestApiClient:
     def get_service_by_ods(self, ods_code):
         api_path = '/app/controllers/api/v1.0/services/byOdsCode/'
 
-        url = f'{self.url}{api_path}{service_id}'
+        url = '{0}{1}{2}'.format(self.url, api_path, ods_code)
 
         try:
             response = self.s.get(url)
