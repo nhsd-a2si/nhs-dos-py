@@ -25,4 +25,3 @@ update = "*"
 [packages]
 
 requests = "*"
-update = "*"
