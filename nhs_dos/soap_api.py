@@ -1,12 +1,16 @@
 import requests
 
 from . import payloads
+from .users import User
 
 uat_url = 'https://uat.pathwaysdos.nhs.uk/app/api/webservices'
 
 
 class SoapApiClient:
     def __init__(self, user, url=uat_url, case=None):
+
+        if type(user) is not User:
+            raise TypeError("You must supply a valid User object")
 
         self.user = user
         self.case = case
