@@ -6,4 +6,7 @@ def test_user_constructor_returns_user_object():
     password = 'test-password'
     u = users.User(username, password)
     assert type(u) == users.User
+    assert u.username == username
+    assert u.password == password
+
 
