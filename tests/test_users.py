@@ -8,10 +8,6 @@ def test_user_attributes_are_set_correctly():
     assert type(u) == users.User
     assert u.username == username
     assert u.password == password
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 
 
 def test_user_string_representations_are_correct():
