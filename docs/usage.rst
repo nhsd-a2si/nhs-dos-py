@@ -17,7 +17,7 @@ REST API
 --------
 Firstly, create a RestApiClient object, passing in your User object::
 
-
+    from nhs_dos.rest_api import RestApiClient
     client = RestApiClient(u)
 
 

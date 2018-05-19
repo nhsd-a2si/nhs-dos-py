@@ -1,12 +1,9 @@
 [[source]]
-
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
-
 [dev-packages]
-
 bumpversion = "==0.5.3"
 watchdog = "==0.8.3"
 tox = "*"
@@ -20,9 +17,7 @@ setuptools = "*"
 "flake8" = "*"
 docutils = "==0.12"
 update = "*"
-
+mock = "*"
 
 [packages]
-
 requests = "*"
-update = "*"
