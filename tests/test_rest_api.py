@@ -27,7 +27,7 @@ def test_passing_url_parameter_sets_attribute():
 def test_single_service_found():
     u = User('test-username', 'test-password')
     client = RestApiClient(u)
-    id = '12345'
+    identifier = '12345'
     data = {
         'success':
             {
@@ -44,7 +44,7 @@ def test_single_service_found():
     with mock.patch.object(client.s, 'get') as get:
         mock_response = get.return_value
         mock_response.json.return_value = data
-        response = client.get_single_service(id, 'dos')
+        response = client.get_single_service(identifier, 'dos')
 
         get.assert_called_with(url)
         assert response[0].id == '12345'
@@ -80,7 +80,7 @@ def test_no_service_found():
 def test_log_line_written():
     u = User('test-username', 'test-password')
     client = RestApiClient(u)
-    id = '12345'
+    identifier = '12345'
     data = {
         'success':
             {
@@ -97,8 +97,8 @@ def test_log_line_written():
         mock_response.json.return_value = data
 
         with mock.patch.object(rest_api.logger, 'debug') as log:
-            client.get_single_service(id, 'dos')
-            log.assert_any_call(f'get_single_service response id = {id}')
+            client.get_single_service(identifier, 'dos')
+            log.assert_any_call(f'get_single_service response id = {identifier}')
 
 
 def test_multiple_services_found():
@@ -108,20 +108,20 @@ def test_multiple_services_found():
 def test_i_dont_catch_requests_error():
     u = User('test-username', 'test-password')
     client = RestApiClient(u)
-    id = '12345'
+    identifier = '12345'
 
     with mock.patch.object(client.s, 'get') as get:
         get.side_effect = requests.ConnectionError
         with pytest.raises(requests.ConnectionError):
-            client.get_single_service(id, 'dos')
+            client.get_single_service(identifier, 'dos')
 
 
 def test_get_service_by_id_passes_dos_id_type():
     u = User('test-username', 'test-password')
     client = RestApiClient(u)
-    id = '12345'
+    identifier = '12345'
 
     with mock.patch.object(client, 'get_single_service') as gss:
-        client.get_service_by_id(id)
-        gss.assert_called_with(id, 'dos')
+        client.get_service_by_id(identifier)
+        gss.assert_called_with(identifier, 'dos')
 

@@ -15,7 +15,7 @@ Types of Contributions
 Report Bugs
 ~~~~~~~~~~~
 
-Report bugs at https://github.com/nhsd-a2si/nhs_dos/issues.
+Report bugs at https://github.com/nhsd-a2si/nhs-dos-py/issues.
 
 If you are reporting a bug, please include:
 

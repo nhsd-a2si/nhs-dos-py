@@ -42,8 +42,7 @@ class RestApiClient:
             logger.debug(f'get_single_service response id = {s1.id}')
             logger.debug(s1.name)
             logger.debug(s1.endpoints)
-            results = []
-            results.append(s1)
+            results = [s1]
             return results
         elif service_count == 0:
             return []
