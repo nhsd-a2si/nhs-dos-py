@@ -10,6 +10,7 @@ class Service:
         for ep in service_json['endpoints']:
             self.endpoints.append(Endpoint(ep))
 
+
 class ServiceList:
     def __init__(self, service_list=None):
 
