@@ -39,9 +39,6 @@ class RestApiClient:
         # Don't return different things based on an arbitrary scenario
         if service_count == 1:
             s1 = Service(response.json()['success']['services'][0])
-            logger.debug(f'get_single_service response id = {s1.id}')
-            logger.debug(s1.name)
-            logger.debug(s1.endpoints)
             results = [s1]
             return results
         elif service_count == 0:

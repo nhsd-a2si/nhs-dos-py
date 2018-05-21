@@ -77,34 +77,6 @@ def test_no_service_found():
         assert response == []
 
 
-def test_log_line_written():
-    u = User('test-username', 'test-password')
-    client = RestApiClient(u)
-    identifier = '12345'
-    data = {
-                'success':
-                    {
-                        'serviceCount': 1,
-                        'services':
-                            [
-                                {'id': '12345', 'name': 'Test Service', 'endpoints': []}
-                            ]
-                    }
-            }
-
-    with mock.patch.object(client.s, 'get') as get:
-        mock_response = get.return_value
-        mock_response.json.return_value = data
-
-        with mock.patch.object(rest_api.logger, 'debug') as log:
-            client.get_single_service(identifier, 'dos')
-            log.assert_any_call(f'get_single_service response id = {identifier}')
-
-        # with mock.patch.object(rest_api.logger, 'debug') as log:
-        #     client.get_single_service(ods, 'ods')
-        #     log.assert_any_call(f'get_single_service response id = {ods}')
-
-
 def test_multiple_services_found():
     pass
 
