@@ -51,9 +51,3 @@ class RestApiClient:
 
     def get_service_by_ods(self, ods_code):
         return self.get_single_service(ods_code, 'ods')
-
-    def get_services_by_clinical_capability(self, case):
-        raise NotImplementedError("Method not yet implemented.")
-
-    def get_services_by_type(self, list_of_types):
-        raise NotImplementedError("Method not yet implemented.")
