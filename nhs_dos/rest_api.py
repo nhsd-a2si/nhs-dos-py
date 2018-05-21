@@ -53,31 +53,7 @@ class RestApiClient:
         return self.get_single_service(service_id, 'dos')
 
     def get_service_by_ods(self, ods_code):
-        api_path = '/services/byOdsCode/'
-
-        url = '{0}{1}{2}'.format(self.url, api_path, ods_code)
-
-        try:
-            response = self.s.get(url)
-
-        except requests.RequestException as e:
-            raise e
-
-        except Exception as e:
-            raise DosClientException("Unable to complete request")
-
-        service_count = int(response.json()['success']['serviceCount'])
-
-        if service_count == 1:
-            s1 = Service(response.json()['success']['services'][0])
-            logger.debug(s1.id)
-            logger.debug(s1.name)
-            logger.debug(s1.endpoints)
-            return s1
-        elif service_count == 0:
-            return ServiceList()
-        else:
-            raise DosClientException("Didn't get 0 or 1 services returned")
+        return self.get_single_service(ods_code, 'ods')
 
     def get_services_by_clinical_capability(self, case):
         raise NotImplementedError("Method not yet implemented.")

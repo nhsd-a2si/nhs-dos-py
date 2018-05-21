@@ -29,15 +29,15 @@ def test_single_service_found():
     client = RestApiClient(u)
     identifier = '12345'
     data = {
-        'success':
-            {
-                'serviceCount': 1,
-                'services':
-                    [
-                        {'id': '12345', 'name': 'Test Service', 'endpoints': []}
-                    ]
+                'success':
+                    {
+                        'serviceCount': 1,
+                        'services':
+                            [
+                                {'id': '12345', 'name': 'Test Service', 'endpoints': []}
+                            ]
+                    }
             }
-    }
 
     url = 'https://uat.pathwaysdos.nhs.uk/app/controllers/api/v1.0/services/byServiceId/12345'
 
@@ -58,13 +58,13 @@ def test_no_service_found():
     client = RestApiClient(u)
     id = '12345'
     data = {
-        'success':
-            {
-                'serviceCount': 0,
-                'services':
-                    []
+                'success':
+                    {
+                        'serviceCount': 0,
+                        'services':
+                            []
+                    }
             }
-    }
 
     url = 'https://uat.pathwaysdos.nhs.uk/app/controllers/api/v1.0/services/byServiceId/12345'
 
@@ -82,15 +82,15 @@ def test_log_line_written():
     client = RestApiClient(u)
     identifier = '12345'
     data = {
-        'success':
-            {
-                'serviceCount': 1,
-                'services':
-                    [
-                        {'id': '12345', 'name': 'Test Service', 'endpoints': []}
-                    ]
+                'success':
+                    {
+                        'serviceCount': 1,
+                        'services':
+                            [
+                                {'id': '12345', 'name': 'Test Service', 'endpoints': []}
+                            ]
+                    }
             }
-    }
 
     with mock.patch.object(client.s, 'get') as get:
         mock_response = get.return_value
@@ -99,6 +99,10 @@ def test_log_line_written():
         with mock.patch.object(rest_api.logger, 'debug') as log:
             client.get_single_service(identifier, 'dos')
             log.assert_any_call(f'get_single_service response id = {identifier}')
+
+        # with mock.patch.object(rest_api.logger, 'debug') as log:
+        #     client.get_single_service(ods, 'ods')
+        #     log.assert_any_call(f'get_single_service response id = {ods}')
 
 
 def test_multiple_services_found():
@@ -125,3 +129,12 @@ def test_get_service_by_id_passes_dos_id_type():
         client.get_service_by_id(identifier)
         gss.assert_called_with(identifier, 'dos')
 
+
+def test_get_service_by_ods_passes_ods_id_type():
+    u = User('test-username', 'test-password')
+    client = RestApiClient(u)
+    id = '12345'
+
+    with mock.patch.object(client, 'get_single_service') as gss:
+        client.get_service_by_ods(id)
+        gss.assert_called_with(id, 'ods')
